@@ -44,30 +44,10 @@
         #define GTS_ARCH_X86 1
     #endif 
 
-#elif defined(__GNUG__)
-
-    // C++11 support
-    #if __GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 8)
-        #error "Requires at least GCC compiler 4.8"
-    #endif
-
-    #define GTS_GCC 1
-
-    #if defined(__x86_64__)
-        #define GTS_ARCH_X64 1
-        #define GTS_ARCH_X86 1
-    #elif defined(__i386__)
-        #define GTS_ARCH_X86 1
-    #elif defined(__aarch64__)
-        #define GTS_ARCH_ARM64 1
-    #elif defined(__arm__)
-        #define GTS_ARCH_ARM32 1
-    #endif
-
 #elif defined(__clang__)
 
     // C++11 support
-    #if __clang_major__ < 3 || (__clang_major__ == 3 && ___clang_minor__ < 3)
+    #if __clang_major__ < 3 || (__clang_major__ == 3 && ___clang_minor__ < 3) || ( defined(__cplusplus) && (__cplusplus >= 201103L) )
         #error "Requires at least clang compiler 3.3"
     #endif
 
@@ -83,6 +63,26 @@
         #define GTS_ARCH_ARM64 1
     #elif defined(__arm__)
         #define GTS_ARCH_ARM 1
+        #define GTS_ARCH_ARM32 1
+    #endif
+
+#elif defined(__GNUG__)
+
+    // C++11 support
+    #if ( __GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 8) ) || ( defined(__cplusplus) && (__cplusplus >= 201103L) )
+        #error "Requires at least GCC compiler 4.8"
+    #endif
+
+    #define GTS_GCC 1
+
+    #if defined(__x86_64__)
+        #define GTS_ARCH_X64 1
+        #define GTS_ARCH_X86 1
+    #elif defined(__i386__)
+        #define GTS_ARCH_X86 1
+    #elif defined(__aarch64__)
+        #define GTS_ARCH_ARM64 1
+    #elif defined(__arm__)
         #define GTS_ARCH_ARM32 1
     #endif
 

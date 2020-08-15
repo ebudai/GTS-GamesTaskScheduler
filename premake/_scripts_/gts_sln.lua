@@ -2,8 +2,8 @@
 
 workspace "gts"
     configurations { "Debug", "RelWithAssert", "Release" }
-    platforms { "x86", "x64" }
-    location ("../../_build/gts/" .. _ACTION .. (_ARGS[1] and ("/" .. _ARGS[1]) or ("")))
+    platforms { "x64" }
+    location ("../../../lib/GTS-GameTaskScheduler/" .. _ACTION .. (_ARGS[1] and ("/" .. _ARGS[1]) or ("")))
     startproject "gts"
     
     warnings "Extra"
@@ -14,9 +14,6 @@ workspace "gts"
         flags "FatalWarnings"
     end
     
-    filter { "platforms:x86"}
-        architecture "x86"
-
     filter { "platforms:x64"}
         architecture "x86_64"
         
