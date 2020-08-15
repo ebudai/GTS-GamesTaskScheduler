@@ -3,7 +3,7 @@
 workspace "gts"
     configurations { "Debug", "RelWithAssert", "Release" }
     platforms { "x64" }
-    location ("../../../lib/GTS-GameTaskScheduler/" .. _ACTION .. (_ARGS[1] and ("/" .. _ARGS[1]) or ("")))
+    location ("../../../../lib/GTS-GameTaskScheduler/" .. _ACTION .. (_ARGS[1] and ("/" .. _ARGS[1]) or ("")))
     startproject "gts"
     
     warnings "Extra"
